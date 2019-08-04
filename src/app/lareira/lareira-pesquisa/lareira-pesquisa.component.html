@@ -1,0 +1,48 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <h1>Lareiras</h1>
+    </div>
+    <div class="ui-g-12">
+        <p-table [columns]="columns" [value]="lareiras" [paginator]="true" [rows]="5" [responsive]="true"
+            emptymessage="Nenhuma lareira encontrada" #dt>
+            <ng-template pTemplate="caption">
+                <div style="text-align: left">
+                    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Pesquisar"
+                        (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                    <td class="col-acoes">
+                        <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"
+                            [routerLink]="['/lareira',rowData.idLareira]"></a>
+                        <label for="">&nbsp;&nbsp;</label>
+                        <button pButton icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"
+                            (click)="confirmarExclusao(rowData)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+            <!--
+            <ng-template pTemplate="summary">
+                Existem {{lareiras?.length}} lareiras cadastradas
+            </ng-template>
+            -->
+
+        </p-table>
+    </div>
+    <div class="ui-g-12">
+        <p-button label="Nova Lareira" routerLink="/lareira/nova"></p-button>
+    </div>
+</div>

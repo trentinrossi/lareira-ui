@@ -1,0 +1,29 @@
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <h1>{{ headerPage }}</h1>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+                <label>Nome</label>
+                <input pInputText type="text" name="nome" [(ngModel)]="lareira.nome" #nome="ngModel" required
+                    minlength="5">
+            </div>
+
+            <div class="ui-g-12 ui-md-9 ui-fluid">
+                <label>Endereço</label>
+                <input pInputText type="text" name="endereco" [(ngModel)]="lareira.endereco"
+                    #endereco="ngModel" required>
+            </div>
+
+            <div class="ui-g-12">
+                <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+                <label for="">&nbsp;&nbsp;</label>
+                <a routerLink="/lareira">Voltar para a pesquisa</a>
+            </div>
+        </div>
+
+    </form>
+</div>
