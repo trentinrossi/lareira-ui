@@ -16,9 +16,11 @@ export class LareiraPesquisaComponent implements OnInit {
     ngOnInit() {
         this.columns = [
             { field: 'nome', header: 'Nome' },
+            { field: 'cidade', header: 'Cidade' },
             { field: 'endereco', header: 'Endereço' },
             { field: 'bairro', header: 'Bairro' },
-            { field: 'cep', header: 'CEP' }
+            { field: 'cep', header: 'CEP' },
+            { field: 'telefone', header: 'Telefone' }
         ];
 
         this.pesquisar();

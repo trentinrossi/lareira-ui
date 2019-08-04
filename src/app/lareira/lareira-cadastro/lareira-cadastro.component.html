@@ -6,15 +6,45 @@
                 <h1>{{ headerPage }}</h1>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
                 <label>Nome</label>
                 <input pInputText type="text" name="nome" [(ngModel)]="lareira.nome" #nome="ngModel" required
                     minlength="5">
             </div>
 
-            <div class="ui-g-12 ui-md-9 ui-fluid">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
                 <label>Endereço</label>
                 <input pInputText type="text" name="endereco" [(ngModel)]="lareira.endereco"
+                    #endereco="ngModel" required>
+            </div>
+
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Bairro</label>
+                <input pInputText type="text" name="bairro" [(ngModel)]="lareira.bairro"
+                    #endereco="ngModel" required>
+            </div>
+
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>CEP</label>
+                <input pInputText type="text" name="cep" [(ngModel)]="lareira.cep"
+                    #endereco="ngModel" required>
+            </div>
+
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>cidade</label>
+                <input pInputText type="text" name="cidade" [(ngModel)]="lareira.cidade"
+                    #endereco="ngModel" required>
+            </div>
+
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Estado</label>
+                <input pInputText type="text" name="estado" [(ngModel)]="lareira.estado"
+                    #endereco="ngModel" required>
+            </div>
+
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Telefone</label>
+                <input pInputText type="text" name="telefone" [(ngModel)]="lareira.telefone"
                     #endereco="ngModel" required>
             </div>
 
