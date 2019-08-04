@@ -3,6 +3,7 @@
         <h1>Lareiras</h1>
     </div>
     <div class="ui-g-12">
+        <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
         <p-table [columns]="columns" [value]="lareiras" [paginator]="true" [rows]="5" [responsive]="true"
             emptymessage="Nenhuma lareira encontrada" #dt>
             <ng-template pTemplate="caption">
@@ -39,6 +40,13 @@
                 Existem {{lareiras?.length}} lareiras cadastradas
             </ng-template>
             -->
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">
+                        Nenhuma lareira encontrada
+                    </td>
+                </tr>
+            </ng-template>
 
         </p-table>
     </div>

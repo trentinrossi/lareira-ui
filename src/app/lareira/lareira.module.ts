@@ -8,7 +8,7 @@ import { LareiraCadastroComponent } from './lareira-cadastro/lareira-cadastro.co
 import { LareiraPesquisaComponent } from './lareira-pesquisa/lareira-pesquisa.component';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
-import { InputTextModule } from 'primeng/primeng';
+import { InputTextModule, ConfirmDialogModule } from 'primeng/primeng';
 
 @NgModule({
     declarations: [
@@ -23,7 +23,8 @@ import { InputTextModule } from 'primeng/primeng';
         InputTextModule,
         TableModule,
         ButtonModule,
-        LareiraRoutingModule
+        LareiraRoutingModule,
+        ConfirmDialogModule
     ]
 })
 export class LareiraModule { }

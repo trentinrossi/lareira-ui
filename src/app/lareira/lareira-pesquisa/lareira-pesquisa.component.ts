@@ -1,3 +1,5 @@
+import { ConfirmationService, MessageService } from 'primeng/primeng';
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { LareiraService } from './../lareira.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +13,12 @@ export class LareiraPesquisaComponent implements OnInit {
     lareiras = [];
     columns: any[];
 
-    constructor(private lareiraService: LareiraService) { }
+    constructor(
+        private lareiraService: LareiraService,
+        private errorHandler: ErrorHandlerService,
+        private confirmation: ConfirmationService,
+        private messageService: MessageService
+    ) { }
 
     ngOnInit() {
         this.columns = [
@@ -33,20 +40,21 @@ export class LareiraPesquisaComponent implements OnInit {
 
     confirmarExclusao(lareira: any) {
         console.log(lareira);
-        this.excluir(lareira);
 
-        // this.confirmation.confirm({
-        //     message: 'Tem certeza que deseja excluir?',
-        //     accept: () => {
-        //         this.excluir(lareira);
-        //     }
-        // });
+        this.confirmation.confirm({
+            message: 'Tem certeza que deseja excluir?',
+            accept: () => {
+                this.excluir(lareira);
+            }
+        });
     }
 
     excluir(lareira: any) {
         this.lareiraService.excluir(lareira.idLareira)
             .then(() => {
                 this.pesquisar();
-            });
+                this.messageService.add({ severity: 'success', detail: 'Lareira excluída com sucesso!' });
+            })
+            .catch(erro => this.errorHandler.handle(erro));
     }
 }

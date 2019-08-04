@@ -1,49 +1,44 @@
+import { environment } from './../../environments/environment';
+import { LareiraHttp } from './../seguranca/lareira-http';
 import { Lareira } from './../core/model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LareiraService {
 
-    lareiraUrl = 'http://localhost:8080/lareiras';
+    lareiraUrl: string;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: LareiraHttp) {
+        this.lareiraUrl = `${environment.apiUrl}/lareiras`;
+    }
 
     pesquisar(): Promise<any> {
-        const params = new URLSearchParams();
-        const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
-
-        return this.http.get(`${this.lareiraUrl}`,
-            { headers })
+        return this.http.get(`${this.lareiraUrl}`)
             .toPromise()
             .then(response => response);
     }
 
     getLareira(idLareira: number): Observable<Lareira> {
-        const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
         const url = `${this.lareiraUrl}/${idLareira}`;
-        return this.http.get<Lareira>(url, { headers });
+        return this.http.get<Lareira>(url);
     }
 
     adicionar(lareira: Lareira): Promise<Lareira> {
-        const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
-        return this.http.post<Lareira>(this.lareiraUrl, lareira, { headers })
+        return this.http.post<Lareira>(this.lareiraUrl, lareira)
             .toPromise();
     }
 
     atualizar(lareira: Lareira): Promise<Lareira> {
-        const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
-        return this.http.put<Lareira>(`${this.lareiraUrl}/${lareira.idLareira}`, lareira, { headers })
+        return this.http.put<Lareira>(`${this.lareiraUrl}/${lareira.idLareira}`, lareira)
             .toPromise();
     }
 
     excluir(codigo: number): Promise<void> {
-        const headers = new HttpHeaders().set('Authorization', 'Basic YWRtaW5AYWRtaW4uY29tOmFkbWlu');
-        return this.http.delete(`${this.lareiraUrl}/${codigo}`, { headers })
+        return this.http.delete(`${this.lareiraUrl}/${codigo}`)
             .toPromise()
             .then(() => null);
     }

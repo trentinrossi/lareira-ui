@@ -1,3 +1,5 @@
+import { SegurancaModule } from './seguranca/seguranca.module';
+import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -101,7 +103,6 @@ import { NodeService } from './demo/service/nodeservice';
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutes,
         HttpClientModule,
         BrowserAnimationsModule,
         AccordionModule,
@@ -169,7 +170,11 @@ import { NodeService } from './demo/service/nodeservice';
         TooltipModule,
         TreeModule,
         TreeTableModule,
-        VirtualScrollerModule
+        VirtualScrollerModule,
+
+        CoreModule,
+        SegurancaModule,
+        AppRoutes
     ],
     declarations: [
         AppComponent,
