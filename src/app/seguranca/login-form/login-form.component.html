@@ -1,26 +1,53 @@
-<div class="container" style="max-width: 400px; margin: auto">
+<!DOCTYPE html>
+<html>
 
-    <form autocomplete="off" #f="ngForm">
-        <div class="ui-g ui-fluid">
+<head>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Sistema Gestão de Lareiras - Login</title>
 
-            <div class="ui-g-12">
-                <h1>Login</h1>
+    <link rel="stylesheet" type="text/css" href="../../../assets/layout/css/layout-blue-grey.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/theme/theme-blue-grey.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/pages/primeng.min.css">
+</head>
+
+<body class="login-body container">
+    <div class="login-panel ui-fluid">
+        <div class="ui-g">
+            <div class="ui-g-6 left-side">
+                <img src="../../../assets/layout/images/login/login-photo.png" class="login-image" />
             </div>
-
-            <div class="ui-g-12">
-                <input pInputText type="email" name="usuario" placeholder="E-mail" ngModel required #usuario>
+            <div class="ui-g-6 ui-sm-12 right-side">
+                <form autocomplete="off" #f="ngForm">
+                    <div class="ui-g-12 container">
+                        <h3>Bem vindo!</h3>
+                        <h2>Acesso ao Sistema de Gestão de Lareiras</h2>
+                    </div>
+                    <div class="ui-g-12">
+                        <div class="input-wrapper">
+                            <input pInputText type="email" name="usuario" placeholder="E-mail" ngModel required
+                                #usuario>
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="ui-g-12">
+                        <div class="input-wrapper">
+                            <input pInputText type="password" name="senha" placeholder="Senha" ngModel required #senha>
+                            <i class="fa fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 button-container">
+                        <button pButton type="submit" label="Login" [disabled]="!f.valid"
+                            (click)="login(usuario.value, senha.value); senha.value = '';">
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <div class="ui-g-12">
-                <input pInputText type="password" name="senha" placeholder="Senha" ngModel required #senha>
-            </div>
-
-            <div class="ui-g-12">
-                <button pButton type="submit" label="Login" [disabled]="!f.valid"
-                    (click)="login(usuario.value, senha.value); senha.value = '';"></button>
-            </div>
-
         </div>
-    </form>
+    </div>
+</body>
 
-</div>
+</html>
