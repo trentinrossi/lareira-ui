@@ -14,16 +14,16 @@
 
 
     <div class="layout-main">
-        <app-topbar></app-topbar>
+        <app-topbar *ngIf="usuarioLogado()"></app-topbar>
 
         <div class="layout-content">
             <router-outlet></router-outlet>
         </div>
 
-        <app-footer></app-footer>
+        <app-footer *ngIf="usuarioLogado()"></app-footer>
 
         <div class="layout-main-mask"></div>
     </div>
 
-    <app-menu [reset]="resetMenu"></app-menu>
+    <app-menu [reset]="resetMenu" *ngIf="usuarioLogado()"></app-menu>
 </div>

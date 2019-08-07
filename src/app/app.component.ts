@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+    constructor(private router: Router) { }
 
     menuMode = 'static';
     topbarMenuActive: boolean;
@@ -184,5 +187,9 @@ export class AppComponent {
     hideToggleMenu() {
         this.toggleMenuActive = false;
         this.staticMenuMobileActive = false;
+    }
+
+    usuarioLogado() {
+        return this.router.url !== '/login';
     }
 }
