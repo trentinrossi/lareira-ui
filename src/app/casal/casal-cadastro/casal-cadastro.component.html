@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="ui-g">
+        <div class="card card-w-title">
+            <h1>{{ headerPage }}</h1>
+
+            <p-fieldset legend="Marido" class="ui-g-12 ui-md-6 ui-fluid">
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Nome</label>
+                    <input pInputText type="text" name="maridoNome" [(ngModel)]="casal.maridoNome" #nome="ngModel"
+                        required minlength="5">
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Sobrenome</label>
+                    <input pInputText type="text" name="maridoSobrenome" [(ngModel)]="casal.maridoSobrenome"
+                        #nome="ngModel" required minlength="5">
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Data Nascimento</label>
+                    <input pInputText type="text" name="maridoDataNascimento" [(ngModel)]="casal.maridoDataNascimento"
+                        #nome="ngModel">
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Profissão</label>
+                    <input pInputText type="text" name="maridoProfissao" [(ngModel)]="casal.maridoProfissao"
+                        #nome="ngModel">
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Fone Celular</label>
+                    <input pInputText type="text" name="maridoTelCelular" [(ngModel)]="casal.maridoTelCelular"
+                        #nome="ngModel">
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>E-mail</label>
+                    <input pInputText type="text" name="maridoEmail" [(ngModel)]="casal.maridoEmail" #nome="ngModel">
+                </div>
+            </p-fieldset>
+
+            <p-fieldset legend="Esposa" class="ui-g-12 ui-md-6 ui-fluid">
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Nome</label>
+                    <input pInputText type="text" name="esposaNome" [(ngModel)]="casal.esposaNome" #nome="ngModel"
+                        required minlength="5">
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Sobrenome</label>
+                    <input pInputText type="text" name="esposaSobrenome" [(ngModel)]="casal.esposaSobrenome"
+                        #nome="ngModel" required minlength="5">
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Data Nascimento</label>
+                    <input pInputText type="text" name="esposaDataNascimento" [(ngModel)]="casal.esposaDataNascimento"
+                        #nome="ngModel">
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Profissão</label>
+                    <input pInputText type="text" name="esposaProfissao" [(ngModel)]="casal.esposaProfissao"
+                        #nome="ngModel">
+                </div>
+
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>Fone Celular</label>
+                    <input pInputText type="text" name="esposaTelCelular" [(ngModel)]="casal.esposaTelCelular"
+                        #nome="ngModel">
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-fluid">
+                    <label>E-mail</label>
+                    <input pInputText type="text" name="esposaEmail" [(ngModel)]="casal.esposaEmail" #nome="ngModel">
+                </div>
+            </p-fieldset>
+        </div>
+    </div>
+</div>

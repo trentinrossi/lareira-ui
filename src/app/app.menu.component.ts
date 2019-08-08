@@ -26,6 +26,13 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 items: [
                     { label: 'Lareiras', icon: 'fa fa-fw fa-code', routerLink: ['/lareira'] },
                 ]
+            },
+            {
+                label: 'Casais', icon: 'fa fa-fw fa-bars',
+                items: [
+                    { label: 'Cadastro', icon: 'fa fa-fw fa-code', routerLink: ['/casal'] },
+                    { label: 'Filhos', icon: 'fa fa-fw fa-code', routerLink: ['/casal/filho'] },
+                ]
             }
         ];
     }
