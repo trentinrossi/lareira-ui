@@ -1,75 +1,97 @@
 <div class="container">
     <div class="ui-g">
         <div class="card card-w-title">
-            <h1>{{ headerPage }}</h1>
+            <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+                <h1>{{ headerPage }}</h1>
 
-            <p-fieldset legend="Marido" class="ui-g-12 ui-md-6 ui-fluid">
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Nome</label>
-                    <input pInputText type="text" name="maridoNome" [(ngModel)]="casal.maridoNome" #nome="ngModel"
-                        required minlength="5">
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Sobrenome</label>
-                    <input pInputText type="text" name="maridoSobrenome" [(ngModel)]="casal.maridoSobrenome"
-                        #nome="ngModel" required minlength="5">
-                </div>
+                <p-fieldset legend="Marido" class="ui-g-12 ui-md-6 ui-fluid">
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Nome</label>
+                        <input pInputText type="text" name="maridoNome" [(ngModel)]="casal.maridoNome" #nome="ngModel"
+                            required minlength="5">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Sobrenome</label>
+                        <input pInputText type="text" name="maridoSobrenome" [(ngModel)]="casal.maridoSobrenome"
+                            #nome="ngModel" required minlength="5">
+                    </div>
 
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Data Nascimento</label>
-                    <input pInputText type="text" name="maridoDataNascimento" [(ngModel)]="casal.maridoDataNascimento"
-                        #nome="ngModel">
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Profissão</label>
-                    <input pInputText type="text" name="maridoProfissao" [(ngModel)]="casal.maridoProfissao"
-                        #nome="ngModel">
-                </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Data Nascimento</label>
+                        <input pInputText type="text" name="maridoDataNascimento"
+                            [(ngModel)]="casal.maridoDataNascimento" #nome="ngModel">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Profissão</label>
+                        <input pInputText type="text" name="maridoProfissao" [(ngModel)]="casal.maridoProfissao"
+                            #nome="ngModel">
+                    </div>
 
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Fone Celular</label>
-                    <input pInputText type="text" name="maridoTelCelular" [(ngModel)]="casal.maridoTelCelular"
-                        #nome="ngModel">
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>E-mail</label>
-                    <input pInputText type="text" name="maridoEmail" [(ngModel)]="casal.maridoEmail" #nome="ngModel">
-                </div>
-            </p-fieldset>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Fone Celular</label>
+                        <input pInputText type="text" name="maridoTelCelular" [(ngModel)]="casal.maridoTelCelular"
+                            #nome="ngModel">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>E-mail</label>
+                        <input pInputText type="text" name="maridoEmail" [(ngModel)]="casal.maridoEmail"
+                            #nome="ngModel">
+                    </div>
 
-            <p-fieldset legend="Esposa" class="ui-g-12 ui-md-6 ui-fluid">
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Nome</label>
-                    <input pInputText type="text" name="esposaNome" [(ngModel)]="casal.esposaNome" #nome="ngModel"
-                        required minlength="5">
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Sobrenome</label>
-                    <input pInputText type="text" name="esposaSobrenome" [(ngModel)]="casal.esposaSobrenome"
-                        #nome="ngModel" required minlength="5">
-                </div>
+                    <div class="ui-g-12 ui-md-12 ui-fluid">
+                        <label>Problema Saúde</label>
+                        <textarea pInputTextarea name="maridoProblemaSaude" [(ngModel)]="casal.maridoProblemaSaude"
+                            #nome="ngModel" [rows]="5" [cols]="60"></textarea>
+                    </div>
+                </p-fieldset>
 
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Data Nascimento</label>
-                    <input pInputText type="text" name="esposaDataNascimento" [(ngModel)]="casal.esposaDataNascimento"
-                        #nome="ngModel">
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Profissão</label>
-                    <input pInputText type="text" name="esposaProfissao" [(ngModel)]="casal.esposaProfissao"
-                        #nome="ngModel">
-                </div>
+                <p-fieldset legend="Esposa" class="ui-g-12 ui-md-6 ui-fluid">
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Nome</label>
+                        <input pInputText type="text" name="esposaNome" [(ngModel)]="casal.esposaNome" #nome="ngModel"
+                            required minlength="5">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Sobrenome</label>
+                        <input pInputText type="text" name="esposaSobrenome" [(ngModel)]="casal.esposaSobrenome"
+                            #nome="ngModel" required minlength="5">
+                    </div>
 
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>Fone Celular</label>
-                    <input pInputText type="text" name="esposaTelCelular" [(ngModel)]="casal.esposaTelCelular"
-                        #nome="ngModel">
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Data Nascimento</label>
+                        <input pInputText type="text" name="esposaDataNascimento"
+                            [(ngModel)]="casal.esposaDataNascimento" #nome="ngModel">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Profissão</label>
+                        <input pInputText type="text" name="esposaProfissao" [(ngModel)]="casal.esposaProfissao"
+                            #nome="ngModel">
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>Fone Celular</label>
+                        <input pInputText type="text" name="esposaTelCelular" [(ngModel)]="casal.esposaTelCelular"
+                            #nome="ngModel">
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <label>E-mail</label>
+                        <input pInputText type="text" name="esposaEmail" [(ngModel)]="casal.esposaEmail"
+                            #nome="ngModel">
+                    </div>
+
+                    <div class="ui-g-12 ui-md-12 ui-fluid">
+                        <label>Problema Saúde</label>
+                        <textarea pInputTextarea name="esposaProblemaSaude" [(ngModel)]="casal.esposaProblemaSaude"
+                            #nome="ngModel" [rows]="5" [cols]="60"></textarea>
+                    </div>
+                </p-fieldset>
+
+                <div class="ui-g-12">
+                    <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+                    <label for="">&nbsp;&nbsp;</label>
+                    <a routerLink="/casal">Voltar para a pesquisa</a>
                 </div>
-                <div class="ui-g-12 ui-md-6 ui-fluid">
-                    <label>E-mail</label>
-                    <input pInputText type="text" name="esposaEmail" [(ngModel)]="casal.esposaEmail" #nome="ngModel">
-                </div>
-            </p-fieldset>
+            </form>
         </div>
     </div>
 </div>

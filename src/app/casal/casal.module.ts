@@ -8,6 +8,7 @@ import { InputTextModule, ConfirmDialogModule } from 'primeng/primeng';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { CasalRoutingModule } from './casal-routing.module';
 import { CasalCadastroComponent } from './casal-cadastro/casal-cadastro.component';
@@ -27,6 +28,7 @@ import { CasalPesquisaComponent } from './casal-pesquisa/casal-pesquisa.componen
         ButtonModule,
         ConfirmDialogModule,
         FieldsetModule,
+        InputTextareaModule,
         CasalRoutingModule
     ]
 })
