@@ -28,7 +28,7 @@ export class CasalPesquisaComponent implements OnInit {
             { field: 'maridoTelCelular', header: 'Celular Marido' },
             { field: 'esposaNome', header: 'Nome Esposa' },
             { field: 'esposaSobrenome', header: 'Sobrenome Esposa' },
-            { field: 'esposaCelular', header: 'Celular Esposa' },
+            { field: 'esposaTelCelular', header: 'Celular Esposa' },
         ];
 
         this.pesquisar();

@@ -14,7 +14,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './../seguranca/auth.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { LareiraService } from './../lareira/lareira.service';
-// import { DashboardService } from './../dashboard/dashboard.service';
+import { CasalService } from './../casal/casal.service';
+
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { LareiraHttp } from '../seguranca/lareira-http';
@@ -40,6 +41,7 @@ registerLocaleData(localePt);
   ],
   providers: [
     LareiraService,
+    CasalService,
     // DashboardService,
     ErrorHandlerService,
     AuthService,

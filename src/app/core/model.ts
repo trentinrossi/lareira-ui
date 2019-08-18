@@ -10,6 +10,7 @@ export class Lareira {
 }
 
 export class Casal {
+    lareira = new Lareira();
     idCasal: number;
     maridoNome: string;
     maridoDataNascimento: Date;

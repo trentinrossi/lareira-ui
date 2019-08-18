@@ -10,7 +10,8 @@
                                         'layout-overlay-active': overlayMenuActive,
                                         'layout-light': lightMenu === true,
                                         'layout-mobile-active': staticMenuMobileActive,
-                                        'layout-static-inactive': staticMenuDesktopInactive}" (click)="onLayoutClick()">
+                                        'layout-static-inactive': staticMenuDesktopInactive}"
+    (click)="onLayoutClick()">
 
 
     <div class="layout-main">
@@ -18,6 +19,7 @@
 
         <div class="layout-content">
             <router-outlet></router-outlet>
+            <p-growl></p-growl>
         </div>
 
         <app-footer *ngIf="usuarioLogado()"></app-footer>
