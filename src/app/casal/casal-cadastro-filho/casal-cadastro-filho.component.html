@@ -1,0 +1,70 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <button pButton label="Novo" icon="fa fa-plus" type="button" class="ui-button-secondary"
+            (click)="prepararNovoFilho()"></button>
+    </div>
+
+    <div class="ui-g-12">
+        <p-table [value]="filhos" [responsive]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Data Nascimento</th>
+                    <th class="col-acoes-header"></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-filho let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{ filho.nome }}</td>
+                    <td>{{ filho.sexo }}</td>
+                    <td>{{ filho.dataNascimento }}</td>
+                    <td class="col-acoes">
+                        <button pButton icon="fa fa-pencil" type="button" pTooltip="Editar" tooltipPosition="top"
+                            (click)="prepararEdicaoFilho(filho, rowIndex)"></button>
+                        <button pButton icon="fa fa-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
+                            (click)="removerFilho(rowIndex)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="4">
+                        Nenhum filho cadastrado
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+
+<p-dialog [header]="editando ? 'Edição Filho' : 'Novo Filho'" [(visible)]="exbindoFormularioFilho" modal="modal"
+    *ngIf="filho">
+    <form #frmFilho="ngForm" (ngSubmit)="confirmarFilho(frmFilho)">
+        <div class="ui-g-12 ui-fluid">
+            <label>Nome</label>
+            <input pInputText type="text" name="nome" required [(ngModel)]="filho.nome" #filhoNome="ngModel" />
+            <app-message [control]="filhoNome" error="required" text="Informe o nome"></app-message>
+        </div>
+
+        <div class="ui-g-12 ui-fluid">
+            <label>Sexo</label>
+            <input pInputText type="sexo" name="sexo" required sexo [(ngModel)]="filho.sexo" #filhoEmail="ngModel" />
+            <app-message [control]="filhoEmail" error="required" text="Informe o sexo"></app-message>
+        </div>
+
+        <div class="ui-g-12 ui-fluid">
+            <label>Data Nascimento</label>
+            <p-calendar name="dataNascimento" dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false"
+                [showIcon]="true" [(ngModel)]="filho.dataNascimento">
+            </p-calendar>
+        </div>
+
+        <div class="ui-g-12">
+            <button pButton type="submit" label="Confirmar" [disabled]="frmFilho.invalid"></button>
+        </div>
+    </form>
+</p-dialog>

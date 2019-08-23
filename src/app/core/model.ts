@@ -25,4 +25,22 @@ export class Casal {
     esposaTelCelular: string;
     esposaEmail: string;
     esposaProblemaSaude: string;
+    filhos = new Array<Filho>();
+}
+
+export class Filho {
+    idFilho: number;
+    nome: string;
+    sexo: string;
+    dataNascimento: Date;
+
+    constructor(idFilho?: number,
+                nome?: string,
+                sexo?: string,
+                dataNascimento?: Date) {
+        this.idFilho = idFilho;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
+    }
 }

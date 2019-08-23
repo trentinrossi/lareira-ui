@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { LareiraService } from './../../lareira/lareira.service';
@@ -18,7 +18,6 @@ export class CasalCadastroComponent implements OnInit {
 
     casal = new Casal();
     headerPage = '';
-    formulario: FormGroup;
 
     lareiras: Lareira[];
     filhos = [];
@@ -30,7 +29,6 @@ export class CasalCadastroComponent implements OnInit {
         private messageService: MessageService,
         private errorHandler: ErrorHandlerService,
         private router: Router,
-        private formBuilder: FormBuilder,
         private lareiraService: LareiraService
     ) { }
 
@@ -41,7 +39,7 @@ export class CasalCadastroComponent implements OnInit {
             { field: 'dataNascimento', header: 'Data Nascimento' }
         ];
 
-        this.configurarFormulario();
+        // this.configurarFormulario();
 
         const idCasal = +this.route.snapshot.paramMap.get('idCasal');
 
@@ -50,42 +48,43 @@ export class CasalCadastroComponent implements OnInit {
         // Protege caso não seja retornado o código
         if (idCasal) {
             this.headerPage = 'Alterar Casal';
+            this.casalService.getCasal(idCasal).subscribe(casal => this.casal = casal);
             // this.casalService.getCasal(idCasal).subscribe(casal => this.casal = casal);
 
-            this.casalService.getCasalByPromise(idCasal)
-                .then(casal => {
-                    this.formulario.patchValue(casal);
-                })
-                .catch(erro => this.errorHandler.handle(erro));
+            // this.casalService.getCasalByPromise(idCasal)
+            //     .then(casal => {
+            //         this.formulario.patchValue(casal);
+            //     })
+            //     .catch(erro => this.errorHandler.handle(erro));
         }
 
         this.carregarLareiras();
     }
 
-    configurarFormulario() {
-        this.formulario = this.formBuilder.group({
-            idCasal: [],
-            lareira: this.formBuilder.group({
-                idLareira: [null, Validators.required],
-                nome: []
-            }),
-            maridoNome: ['', Validators.compose([this.validarObrigatoriedade, this.validarTamanhoMinimo(5)])],
-            // maridoNome: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-            maridoSobrenome: [],
-            maridoDataNascimento: [],
-            maridoProfissao: [],
-            maridoTelCelular: [],
-            maridoEmail: [],
-            maridoProblemaSaude: [],
-            esposaNome: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-            esposaSobrenome: [''],
-            esposaDataNascimento: [],
-            esposaProfissao: [''],
-            esposaTelCelular: [''],
-            esposaEmail: [''],
-            esposaProblemaSaude: [''],
-        });
-    }
+    // configurarFormulario() {
+    //     this.formulario = this.formBuilder.group({
+    //         idCasal: [],
+    //         lareira: this.formBuilder.group({
+    //             idLareira: [null, Validators.required],
+    //             nome: []
+    //         }),
+    //         maridoNome: ['', Validators.compose([this.validarObrigatoriedade, this.validarTamanhoMinimo(5)])],
+    //         // maridoNome: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+    //         maridoSobrenome: [],
+    //         maridoDataNascimento: [],
+    //         maridoProfissao: [],
+    //         maridoTelCelular: [],
+    //         maridoEmail: [],
+    //         maridoProblemaSaude: [],
+    //         esposaNome: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+    //         esposaSobrenome: [''],
+    //         esposaDataNascimento: [],
+    //         esposaProfissao: [''],
+    //         esposaTelCelular: [''],
+    //         esposaEmail: [''],
+    //         esposaProblemaSaude: [''],
+    //     });
+    // }
 
     validarObrigatoriedade(input: FormControl) {
         return (input.value ? null : { obrigatoriedade: true });
@@ -112,19 +111,18 @@ export class CasalCadastroComponent implements OnInit {
             .catch(erro => this.errorHandler.handle(erro));
     }
 
-    salvar() {
+    salvar(form: FormControl) {
         if (this.casal.idCasal) {
-            this.atualizarCasal();
+            this.atualizarCasal(form);
         } else {
-            this.inserirCasal();
+            this.inserirCasal(form);
         }
     }
 
-    atualizarCasal() {
-        this.casalService.atualizar(this.formulario.value)
+    atualizarCasal(form: FormControl) {
+        this.casalService.atualizar(this.casal)
             .then(casal => {
-                // this.casal = casal;
-                this.formulario.patchValue(casal);
+                this.casal = casal;
 
                 this.messageService.add({ severity: 'success', detail: 'Casal alterado com sucesso!' });
                 this.router.navigate(['/casal']);
@@ -132,8 +130,8 @@ export class CasalCadastroComponent implements OnInit {
             .catch(erro => this.errorHandler.handle(erro));
     }
 
-    inserirCasal() {
-        this.casalService.adicionar(this.formulario.value)
+    inserirCasal(form: FormControl) {
+        this.casalService.adicionar(this.casal)
             .then(casalAdicionado => {
                 this.messageService.add({ severity: 'success', detail: 'Casal adicionado com sucesso!' });
                 this.router.navigate(['/casal']);

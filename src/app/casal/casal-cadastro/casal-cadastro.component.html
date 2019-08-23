@@ -1,13 +1,15 @@
 <div class="container">
     <div class="ui-g ui-fluid">
-        <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
+        <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
-            <div class="ui-g-12 ui-lg-12 ui-md-12" formGroupName="lareira">
+            <div class="ui-g-12 ui-lg-12 ui-md-12">
                 <div class="card no-margin">
                     <h1>Lareira</h1>
                     <label>Selecione a Lareira*</label>
-                    <p-dropdown name="lareira" [options]="lareiras" placeholder="Selecione" [autoWidth]="false"
-                        [filter]="true" formControlName="idLareira"></p-dropdown>
+                    <p-dropdown placeholder="Selecione..." [autoWidth]="false" [filter]="true" [options]="lareiras"
+                        [(ngModel)]="casal.lareira.idLareira" name="lareira" #lareira="ngModel" required></p-dropdown>
+
+                    <app-message [control]="lareira" error="required" text="Informe a lareira"></app-message>
                 </div>
             </div>
 
@@ -17,43 +19,42 @@
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Nome*</label>
-                            <input pInputText type="text" name="maridoNome" formControlName="maridoNome" minlength="5">
-                            <!-- <p-message severity="error" text="Nome é obrigatório" *ngIf="!formulario.controls['maridoNome'].valid&&formulario.controls['maridoNome'].dirty"></p-message> -->
-                            <app-message [control]="formulario.get('maridoNome')" error="obrigatoriedade"
-                                text="Informe o nome">
+                            <input pInputText type="text" name="maridoNome" [(ngModel)]="casal.maridoNome" #maridoNome="ngModel"
+                                minlength="5">
+                            <app-message [control]="maridoNome" error="required" text="Informe o nome">
                             </app-message>
-                            <app-message [control]="formulario.get('maridoNome')" error="tamanhoMinimo"
-                                text="Mínimo de {{ formulario.get('maridoNome').errors?.tamanhoMinimo?.tamanho }} caracteres">
+                            <app-message [control]="maridoNome" error="minlength"
+                                text="Mínimo de {{ maridoNome.errors?.minlength?.requiredLength }} caracteres">
                             </app-message>
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Sobrenome</label>
-                            <input pInputText type="text" name="maridoSobrenome" formControlName="maridoSobrenome">
+                            <input pInputText type="text" name="maridoSobrenome" [(ngModel)]="casal.maridoSobrenome">
                         </div>
 
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Data Nascimento</label>
                             <p-calendar name="maridoDataNascimento" dateFormat="dd/mm/yy" [inline]="false"
-                                [readonlyInput]="false" [showIcon]="true" formControlName="maridoDataNascimento">
+                                [readonlyInput]="false" [showIcon]="true" [(ngModel)]="casal.maridoDataNascimento">
                             </p-calendar>
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Profissão</label>
-                            <input type="text" pInputText name="maridoProfissao" formControlName="maridoProfissao">
+                            <input type="text" pInputText name="maridoProfissao" [(ngModel)]="casal.maridoProfissao">
                         </div>
 
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Fone Celular</label>
-                            <input pInputText type="text" name="maridoTelCelular" formControlName="maridoTelCelular">
+                            <input pInputText type="text" name="maridoTelCelular" [(ngModel)]="casal.maridoTelCelular">
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>E-mail</label>
-                            <input pInputText type="text" name="maridoEmail" formControlName="maridoEmail">
+                            <input pInputText type="text" name="maridoEmail" [(ngModel)]="casal.maridoEmail">
                         </div>
 
                         <div class="ui-g-12 ui-md-12 ui-fluid">
                             <label>Problema Saúde</label>
-                            <textarea pInputTextarea name="maridoProblemaSaude" formControlName="maridoProblemaSaude"
+                            <textarea pInputTextarea name="maridoProblemaSaude" [(ngModel)]="casal.maridoProblemaSaude"
                                 [rows]="5" [cols]="60"></textarea>
                         </div>
                     </div>
@@ -66,38 +67,38 @@
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Nome*</label>
-                            <input pInputText type="text" name="esposaNome" formControlName="esposaNome" required
+                            <input pInputText type="text" name="esposaNome" [(ngModel)]="casal.esposaNome" required
                                 minlength="5">
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Sobrenome</label>
-                            <input pInputText type="text" name="esposaSobrenome" formControlName="esposaSobrenome"
+                            <input pInputText type="text" name="esposaSobrenome" [(ngModel)]="casal.esposaSobrenome"
                                 required minlength="5">
                         </div>
 
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Data Nascimento</label>
                             <p-calendar name="esposaDataNascimento" dateFormat="dd/mm/yy" [inline]="false"
-                                [readonlyInput]="false" [showIcon]="true" formControlName="esposaDataNascimento">
+                                [readonlyInput]="false" [showIcon]="true" [(ngModel)]="casal.esposaDataNascimento">
                             </p-calendar>
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Profissão</label>
-                            <input pInputText type="text" name="esposaProfissao" formControlName="esposaProfissao">
+                            <input pInputText type="text" name="esposaProfissao" [(ngModel)]="casal.esposaProfissao">
                         </div>
 
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Fone Celular</label>
-                            <input pInputText type="text" name="esposaTelCelular" formControlName="esposaTelCelular">
+                            <input pInputText type="text" name="esposaTelCelular" [(ngModel)]="casal.esposaTelCelular">
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>E-mail</label>
-                            <input pInputText type="text" name="esposaEmail" formControlName="esposaEmail">
+                            <input pInputText type="text" name="esposaEmail" [(ngModel)]="casal.esposaEmail">
                         </div>
 
                         <div class="ui-g-12 ui-md-12 ui-fluid">
                             <label>Problema Saúde</label>
-                            <textarea pInputTextarea name="esposaProblemaSaude" formControlName="esposaProblemaSaude"
+                            <textarea pInputTextarea name="esposaProblemaSaude" [(ngModel)]="casal.esposaProblemaSaude"
                                 [rows]="5" [cols]="60"></textarea>
                         </div>
                     </div>
@@ -107,39 +108,7 @@
             <div class="ui-g-12">
                 <div class="card no-margin">
                     <h1>Filhos</h1>
-                    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-                    <p-table [columns]="columns" [value]="filhos" [paginator]="true" [rows]="3" [responsive]="true" #dt>
-                        <ng-template pTemplate="header" let-columns>
-                            <tr>
-                                <th *ngFor="let col of columns">
-                                    {{col.header}}
-                                </th>
-                                <th>Ações</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-columns="columns">
-                            <tr [pSelectableRow]="rowData">
-                                <td *ngFor="let col of columns">
-                                    {{rowData[col.field]}}
-                                </td>
-                                <td class="col-acoes">
-                                    <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"
-                                        [routerLink]="['/casal',rowData.idCasal]"></a>
-                                    <label for="">&nbsp;&nbsp;</label>
-                                    <button pButton icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"
-                                        (click)="confirmarExclusao(rowData)"></button>
-                                </td>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="emptymessage">
-                            <tr>
-                                <td colspan="4">
-                                    Nenhum filho encontrado
-                                </td>
-                            </tr>
-                        </ng-template>
-
-                    </p-table>
+                    <app-casal-cadastro-filho [filhos]="casal.filhos"></app-casal-cadastro-filho>
                 </div>
             </div>
 
@@ -147,7 +116,7 @@
                 <div class="card no-margin">
                     <div class="ui-g">
                         <div class="ui-g-1">
-                            <button pButton type="submit" label="Salvar" [disabled]="!formulario.valid"></button>
+                            <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
                         </div>
                         <div class="ui-g-2">
                             <a routerLink="/casal">Voltar para a pesquisa</a>

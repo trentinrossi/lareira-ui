@@ -30,8 +30,7 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
             {
                 label: 'Casais', icon: 'fa fa-fw fa-bars',
                 items: [
-                    { label: 'Cadastro', icon: 'fa fa-fw fa-code', routerLink: ['/casal'] },
-                    { label: 'Filhos', icon: 'fa fa-fw fa-code', routerLink: ['/casal/filho'] },
+                    { label: 'Cadastro', icon: 'fa fa-fw fa-code', routerLink: ['/casal'] }
                 ]
             }
         ];

@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule, ConfirmDialogModule } from 'primeng/primeng';
@@ -19,11 +20,13 @@ import { SharedModule } from '../shared/shared.module';
 
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { CasalCadastroFilhoComponent } from './casal-cadastro-filho/casal-cadastro-filho.component';
 
 @NgModule({
     declarations: [
         CasalCadastroComponent,
-        CasalPesquisaComponent],
+        CasalPesquisaComponent,
+        CasalCadastroFilhoComponent],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -41,7 +44,8 @@ import { MessageModule } from 'primeng/message';
         CasalRoutingModule,
         SharedModule,
         MessageModule,
-        MessagesModule
+        MessagesModule,
+        DialogModule
     ]
 })
 export class CasalModule { }
