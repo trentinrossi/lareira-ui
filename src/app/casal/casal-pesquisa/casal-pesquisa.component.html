@@ -4,7 +4,8 @@
     </div>
     <div class="ui-g-12">
         <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-        <p-table [columns]="columns" [value]="casais" [paginator]="true" [rows]="5" [responsive]="true"
+        <p-table [columns]="columns" [value]="casais" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true"
+            (onLazyLoad)="aoMudarPagina($event)" [totalRecords]="totalRegistros" [responsive]="true" [loading]="loading"
             emptymessage="Nenhum casal encontrado" #dt>
             <ng-template pTemplate="caption">
                 <div style="text-align: left">

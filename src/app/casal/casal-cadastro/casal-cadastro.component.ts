@@ -48,14 +48,14 @@ export class CasalCadastroComponent implements OnInit {
         // Protege caso não seja retornado o código
         if (idCasal) {
             this.headerPage = 'Alterar Casal';
-            this.casalService.getCasal(idCasal).subscribe(casal => this.casal = casal);
+            // this.casalService.getCasal(idCasal).subscribe(casal => this.casal = casal);
             // this.casalService.getCasal(idCasal).subscribe(casal => this.casal = casal);
 
-            // this.casalService.getCasalByPromise(idCasal)
-            //     .then(casal => {
-            //         this.formulario.patchValue(casal);
-            //     })
-            //     .catch(erro => this.errorHandler.handle(erro));
+            this.casalService.getCasalByPromise(idCasal)
+                .then(casal => {
+                    this.casal = casal;
+                })
+                .catch(erro => this.errorHandler.handle(erro));
         }
 
         this.carregarLareiras();

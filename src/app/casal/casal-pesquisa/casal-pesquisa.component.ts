@@ -1,8 +1,9 @@
+import { LazyLoadEvent } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 
 import { ConfirmationService, MessageService } from 'primeng/primeng';
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { CasalService } from './../casal.service';
+import { CasalService, Filtro } from './../casal.service';
 
 @Component({
     selector: 'app-casal-pesquisa',
@@ -13,6 +14,9 @@ export class CasalPesquisaComponent implements OnInit {
 
     casais = [];
     columns: any[];
+    totalRegistros = 0;
+    loading: boolean;
+    filtro = new Filtro();
 
     constructor(
         private casalService: CasalService,
@@ -31,12 +35,30 @@ export class CasalPesquisaComponent implements OnInit {
             { field: 'esposaTelCelular', header: 'Celular Esposa' },
         ];
 
+        this.loading = true;
         this.pesquisar();
     }
 
-    pesquisar() {
-        this.casalService.pesquisar()
-            .then(casais => this.casais = casais);
+    pesquisar(pagina = 0) {
+        this.filtro.pagina = pagina;
+
+        this.casalService.pesquisar(this.filtro)
+            .then(casais => {
+                this.totalRegistros = casais.total;
+                this.casais = casais.casais;
+                this.loading = false;
+            })
+            .catch(erro => this.errorHandler.handle(erro));
+    }
+
+    aoMudarPagina(event: LazyLoadEvent) {
+        console.log(event.globalFilter);
+        const pagina = event.first / event.rows;
+
+        this.filtro.pagina = pagina;
+        this.filtro.glogalFilter = event.globalFilter;
+
+        this.pesquisar(pagina);
     }
 
     confirmarExclusao(casal: any) {

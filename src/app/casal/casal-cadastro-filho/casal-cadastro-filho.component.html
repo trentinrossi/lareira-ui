@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ filho.nome }}</td>
                     <td>{{ filho.sexo }}</td>
-                    <td>{{ filho.dataNascimento }}</td>
+                    <td>{{ filho.dataNascimento | date: 'dd/MM/yyyy' }}</td>
                     <td class="col-acoes">
                         <button pButton icon="fa fa-pencil" type="button" pTooltip="Editar" tooltipPosition="top"
                             (click)="prepararEdicaoFilho(filho, rowIndex)"></button>
