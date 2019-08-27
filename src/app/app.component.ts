@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AppMenuComponent } from './app.menu.component';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,9 +7,11 @@ import { Router } from '@angular/router';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+
+    }
 
     menuMode = 'static';
     topbarMenuActive: boolean;
@@ -27,6 +30,10 @@ export class AppComponent {
     menuHoverActive: boolean;
     rightPanelActive: boolean;
     rightPanelClick: boolean;
+
+    ngOnInit(): void {
+
+    }
 
     onLayoutClick() {
         if (!this.topbarItemClick) {

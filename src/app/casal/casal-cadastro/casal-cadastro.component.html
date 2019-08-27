@@ -19,8 +19,8 @@
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Nome*</label>
-                            <input pInputText type="text" name="maridoNome" [(ngModel)]="casal.maridoNome" #maridoNome="ngModel"
-                                minlength="5">
+                            <input pInputText type="text" name="maridoNome" [(ngModel)]="casal.maridoNome"
+                                #maridoNome="ngModel" minlength="5">
                             <app-message [control]="maridoNome" error="required" text="Informe o nome">
                             </app-message>
                             <app-message [control]="maridoNome" error="minlength"
@@ -68,12 +68,16 @@
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Nome*</label>
                             <input pInputText type="text" name="esposaNome" [(ngModel)]="casal.esposaNome" required
-                                minlength="5">
+                                #esposaNome="ngModel" minlength="5">
+                            <app-message [control]="esposaNome" error="required" text="Informe o nome">
+                            </app-message>
+                            <app-message [control]="esposaNome" error="minlength"
+                                text="Mínimo de {{ esposaNome.errors?.minlength?.requiredLength }} caracteres">
+                            </app-message>
                         </div>
                         <div class="ui-g-12 ui-md-6 ui-fluid">
                             <label>Sobrenome</label>
-                            <input pInputText type="text" name="esposaSobrenome" [(ngModel)]="casal.esposaSobrenome"
-                                required minlength="5">
+                            <input pInputText type="text" name="esposaSobrenome" [(ngModel)]="casal.esposaSobrenome">
                         </div>
 
                         <div class="ui-g-12 ui-md-6 ui-fluid">

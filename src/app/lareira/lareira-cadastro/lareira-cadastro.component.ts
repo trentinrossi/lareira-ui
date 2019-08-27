@@ -5,7 +5,6 @@ import { LareiraService } from './../lareira.service';
 
 import { Lareira } from './../../core/model';
 import { FormControl } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-lareira-cadastro',

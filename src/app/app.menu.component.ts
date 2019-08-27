@@ -12,7 +12,7 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
 
     @Input() reset: boolean;
 
-    model: any[];
+    model: MenuItem[];
 
     @ViewChild('layoutMenuScroller', { static: true }) layoutMenuScrollerViewChild: ScrollPanel;
 

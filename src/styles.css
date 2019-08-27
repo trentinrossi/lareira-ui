@@ -3,3 +3,11 @@
     width: 90px;
     text-align: center;
   }
+
+input.ng-dirty.ng-invalid {
+    color: red
+}
+
+.ui-inputtext.ng-dirty {
+    border-color: #ccc !important;
+}

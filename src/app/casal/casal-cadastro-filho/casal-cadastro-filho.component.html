@@ -18,7 +18,7 @@
             <ng-template pTemplate="body" let-filho let-rowIndex="rowIndex">
                 <tr>
                     <td>{{ filho.nome }}</td>
-                    <td>{{ filho.sexo }}</td>
+                    <td>{{ filho.sexo == 'M' ? 'Masculino' : 'Feminino' }}</td>
                     <td>{{ filho.dataNascimento | date: 'dd/MM/yyyy' }}</td>
                     <td class="col-acoes">
                         <button pButton icon="fa fa-pencil" type="button" pTooltip="Editar" tooltipPosition="top"
@@ -52,8 +52,8 @@
 
         <div class="ui-g-12 ui-fluid">
             <label>Sexo</label>
-            <input pInputText type="sexo" name="sexo" required sexo [(ngModel)]="filho.sexo" #filhoEmail="ngModel" />
-            <app-message [control]="filhoEmail" error="required" text="Informe o sexo"></app-message>
+            <p-dropdown placeholder="Selecione..." [autoWidth]="false" [options]="generos" [(ngModel)]="filho.sexo"
+                name="sexo" #filhoEmail="ngModel" required></p-dropdown>
         </div>
 
         <div class="ui-g-12 ui-fluid">

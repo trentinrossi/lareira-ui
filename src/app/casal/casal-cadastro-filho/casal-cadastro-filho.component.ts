@@ -10,6 +10,11 @@ import { Filho } from './../../core/model';
 })
 export class CasalCadastroFilhoComponent implements OnInit {
 
+    generos = [
+        { label: 'Masculino', value: 'M' },
+        { label: 'Feminino', value: 'F' },
+      ];
+
     @Input() filhos: Array<Filho>;
     filho: Filho;
     exbindoFormularioFilho = false;
